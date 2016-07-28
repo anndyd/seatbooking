@@ -67,7 +67,7 @@
 								path: 'UnitNumber',
 								formatter: '.formatter.currencyValue'
 							}"
-							numberUnit="{UnitOfMeasure}">
+							>
 					</ObjectListItem>
 				</items>
 			</List>
@@ -89,11 +89,11 @@
 			</semantic:SortSelect>
 		</semantic:sort>
 
-		<semantic:filter>
+		<!--semantic:filter>
 			<semantic:FilterAction
 					id="filter"
 					press="onOpenViewSettings" />
-		</semantic:filter>
+		</semantic:filter-->
 
 		<semantic:group>
 			<semantic:GroupSelect

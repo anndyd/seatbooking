@@ -16,11 +16,7 @@
 			<ObjectHeader
 					id="objectHeader"
 					title="{Name}"
-					number="{
-								path: 'UnitNumber',
-								formatter: '.formatter.currencyValue'
-					}"
-					numberUnit="{UnitOfMeasure}">
+					>
 			</ObjectHeader>
 			<IconTabBar
 					id="iconTabBar"
@@ -28,13 +24,13 @@
 				<items>
 					<IconTabFilter
 							id="iconTabBarFilter1"
-							icon="sap-icon://hint"
-							tooltip="{i18n>detailIconTabBarInfo}">
+							icon="sap-icon://activity-items"
+							tooltip="{i18n>bylist}">
 					</IconTabFilter>
 					<IconTabFilter
 							id="iconTabBarFilter2"
-							icon="sap-icon://attachment"
-							tooltip="{i18n>detailIconTabBarAttachments}">
+							icon="sap-icon://globe"
+							tooltip="{i18n>bymap}">
 					</IconTabFilter>
 				</items>
 			</IconTabBar>
@@ -57,36 +53,25 @@
 					<Column>
 						<Text text="{i18n>detailLineItemTableIDColumn}"/>
 					</Column>
-					<Column
-							minScreenWidth="Tablet"
-							demandPopin="true"
-							hAlign="Right">
-						<Text text="{i18n>detailLineItemTableUnitNumberColumn}"/>
-					</Column>
+					
 				</columns>
 				<items>
 					<ColumnListItem>
 						<cells>
 							<ObjectIdentifier
-									title="{Name}"
-									text="{LineItemID}"/>
-							<ObjectNumber
-								number="{
-									path: 'UnitNumber',
-									formatter: '.formatter.currencyValue'
-								}"
-								unit="{UnitOfMeasure}"/>
+									title="{Name}"/>
+							
 						</cells>
 					</ColumnListItem>
 				</items>
 			</Table>
 		</semantic:content>
 
-		<semantic:sendEmailAction>
+		<!--semantic:sendEmailAction>
 			<semantic:SendEmailAction
 					id="shareEmail"
 					press="onShareEmailPress"/>
-		</semantic:sendEmailAction>
+		</semantic:sendEmailAction-->
 
 	</semantic:DetailPage>
 

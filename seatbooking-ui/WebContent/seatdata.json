@@ -1,0 +1,40 @@
+{
+	"Building" : [
+		{
+			"floor" : "BJG01.6"
+		},
+        {
+            "floor" : "BJG01.8"
+        },
+        {
+            "floor" : "BJG01.9"
+        }
+	],
+    "Seat" : [
+        {
+            "floor" : "BJG01.6",
+            "seatno" : "06001",
+            "status" : "Available"
+        },
+        {
+            "floor" : "BJG01.6",
+            "seatno" : "06003",
+            "status" : "Available"
+        },
+        {
+            "floor" : "BJG01.6",
+            "seatno" : "06007",
+            "status" : "Available"
+        },
+        {
+            "floor" : "BJG01.8",
+            "seatno" : "08001",
+            "status" : "Available"
+        },
+        {
+            "floor" : "BJG01.9",
+            "seatno" : "09001",
+            "status" : "Available"
+        }
+    ]
+}
