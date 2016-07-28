@@ -1,0 +1,17 @@
+{
+	"TileCollection" : [
+		{
+			"icon" : "activity-2",
+			"number" : "188",
+			"numberUnit" : "seat",
+			"title" : "Book"
+		},
+		{
+			"icon" : "action",
+			"number" : "1",
+			"title" : "UnBook",
+			"info" : "Booked",
+			"infoState" : "Error"
+		}
+	]
+}

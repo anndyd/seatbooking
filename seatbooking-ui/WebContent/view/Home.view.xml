@@ -1,0 +1,47 @@
+<mvc:View 
+        controllerName="sap.ui.bk.masterdetail.view.Home" 
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.tnt"
+        xmlns:m="sap.m">
+	<m:Page
+            id="page"
+            title="{masterView>/title}"
+            showNavButton="false">
+        <m:customHeader>
+            <m:Bar id="headerBar">
+                <!--m:contentLeft>
+                    <m:Button text="Collapse/Exapand"
+                  icon="sap-icon://menu2"
+                  press="onCollapseExapandPress" />
+                </m:contentLeft-->
+                <m:contentMiddle>
+                    <m:Label text="Seat Booking" />
+                </m:contentMiddle>
+            </m:Bar>
+        </m:customHeader>
+        <m:content>
+		    <NavigationList id="navigationList" 
+		          itemSelect="onSelectItem">
+		        <NavigationListItem
+		                text="Book Seat"
+		                icon="sap-icon://appointment">
+		            <NavigationListItem text="Book" key="master">
+		            </NavigationListItem>
+		            <NavigationListItem text="UnBook">
+		            </NavigationListItem>
+		        </NavigationListItem>
+		        <NavigationListItem
+		                text="Administration"
+		                icon="sap-icon://manager">
+		            <NavigationListItem text="Report">
+		            </NavigationListItem>
+		            <NavigationListItem text="User Role">
+		            </NavigationListItem>
+		        </NavigationListItem>
+		    </NavigationList>
+		</m:content>
+		<m:footer>
+		  <m:Bar></m:Bar>
+		</m:footer>
+	</m:Page>
+</mvc:View>

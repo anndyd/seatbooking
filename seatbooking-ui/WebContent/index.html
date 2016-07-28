@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Master-Detail</title>
+
+	<!-- Bootstrapping UI5 -->
+	<script id="sap-ui-bootstrap"
+			src="resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-resourceroots='{"sap.ui.bk.masterdetail": "."}'
+			data-sap-ui-frameOptions="trusted">
+	</script>
+
+	<script>
+		sap.ui.getCore().attachInit(function () {
+			sap.ui.require([
+"sap/ui/bk/masterdetail/localService/mockserver",
+				"sap/m/Shell",
+				"sap/ui/core/ComponentContainer",
+				"sap/ui/core/IconPool",
+				"sap/ui/unified/ShellHeadItem",
+				"sap/ui/unified/ShellHeadUserItem"
+			], function (mockserver, Shell, ComponentContainer, IconPool, ShellHeadItem, ShellHeadUserItem) {
+		        var isMozilla = false;
+		        var bk = {};
+		        mockserver.init();
+		        
+		        if ($.browser.mozilla) {
+		            isMozilla = true;
+		        }            
+// 		        if(<%= IsLogin %>){
+// 		            bk.isLogin = true;
+// 		            bk.userName = '<%= UserName%>';
+// 		            bk.userMail = '<%= UserMail%>';
+// 		            bk.userId = '<%= UserId%>';
+// 		            bk.avatar = fnFormatter.userAvatarLinkFormatter(bk.userId);
+// 		        }
+// 		        else{
+		            bk.isLogin = false;
+		            bk.userName = "";
+		            bk.userMail = "";
+		            bk.teamName = "";
+		            bk.userId = "";
+		            bk.avatar = IconPool.getIconURI("person-placeholder");
+//		        }
+		
+		        var oMyShell = new Shell('my_shell',{
+		            title: "Seat Booking",
+		            showLogout: false,
+		            appWidthLimited: true,
+		            app: new ComponentContainer({
+		                name: 'sap.ui.bk.masterdetail'
+		            })
+		        });
+		        var oActionSheet = new sap.m.ActionSheet({
+		            buttons: [
+		                new sap.m.Button({
+		                    icon: IconPool.getIconURI("less"),
+		                    text: "One Click Login",
+		                    visible: !isMozilla,
+		                    tooltip: 'SSO Login',
+		                    press: function () {
+		                        window.location.reload();
+		                    }
+		                }),
+		                new sap.m.Button({
+		                    icon: IconPool.getIconURI("home"),
+		                    text: "Domain Account",
+		                    tooltip: 'Login with domain account',
+		                    press: function () {
+		                        bk.openLoginWindow();
+		                    }
+		                })
+		            ]
+		        });
+		        var oHomeShell = new sap.ui.unified.Shell({
+		            icon: "image/sap_logo.png",
+		            headItems: [
+		                new ShellHeadItem({
+		                    icon: sap.ui.core.IconPool.getIconURI("home"),
+		                    visible: true,
+		                    press: function() {
+		                        window.location.hash = "main"
+		                    }
+		                })
+		            ],
+		            headEndItems: [
+		                new ShellHeadItem("shell_end_logoff", {
+		                    icon: sap.ui.core.IconPool.getIconURI("log"),
+		                    visible: isMozilla && bk.isLogin,
+		                    press: function() {
+		                        bk.logoff();
+		                    }
+		                })
+		            ],
+		            user: [
+		                new sap.ui.unified.ShellHeadUserItem("shell_head_user", {
+		                    image: bk.avatar,
+		                    username: bk.userName,
+		                    //showPopupIndicator: !bk.isLogin,
+		                    showPopupIndicator: false,
+		                    press: function(oEvent){
+		                        if (!bk.isLogin) {                          
+		                            //oActionSheet.openBy(oEvent.getSource());
+		                            bk.openLoginWindow();
+		                        }
+		                    }
+		                })
+		            ],
+		            content: [
+		                oMyShell
+		            ]
+		        });
+		        oHomeShell.placeAt('content');
+
+			  // initialize the UI component
+// 				new Shell({
+// 					app: new ComponentContainer({
+// 						height : "100%",
+// 						name : "sap.ui.bk.masterdetail"
+// 					})
+// 				}).placeAt("content");
+			});
+		});
+	</script>
+
+</head>
+
+<!-- UI Content -->
+<body class="sapUiBody" id="content">
+</body>
+</html>
